@@ -1,8 +1,11 @@
-﻿using GymSystem.Models;
+﻿using GymSystem.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace GymSystem.Configurations
+namespace GymSystem.DAL.Configurations
 {
     public class PlanConfigurations : IEntityTypeConfiguration<Plan>
     {
@@ -20,7 +23,7 @@ namespace GymSystem.Configurations
 
             builder.Property(p => p.CreatedAt).HasDefaultValueSql("GETDATE()");
 
-            builder.ToTable(tb => 
+            builder.ToTable(tb =>
             {
                 tb.HasCheckConstraint("DurationCheckValue", "Duration Between 1 and 365");
             });
