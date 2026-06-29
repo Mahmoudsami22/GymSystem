@@ -3,13 +3,14 @@ using Microsoft.EntityFrameworkCore;
 
 using GymSystem.DAL.Repositories.Interfaces;
 using GymSystem.DAL.Repositories.Classes;
+using GymSystem.DAL.Entities;
 
 namespace GymSystem.Controllers
 {
     public class PlanController : Controller
     {
-        private readonly IPlanRepository _planRepositors;
-        public PlanController(IPlanRepository planRepository)
+        private readonly IGenericRepository<Plan> _planRepositors;
+        public PlanController(IGenericRepository<Plan> planRepository)
         {
             _planRepositors = planRepository;
         }
