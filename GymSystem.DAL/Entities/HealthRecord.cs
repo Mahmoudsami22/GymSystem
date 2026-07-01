@@ -13,7 +13,6 @@ namespace GymSystem.DAL.Entities
         public string BloodType { get; set; } = null!;
         [MaxLength(500)]
         public string? Note { get; set; }
-        public DateTime LastUpdate { get; set; }
         public int MemberId { get; set; }
         public Member Member { get; set; } = null!;
     }

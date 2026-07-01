@@ -10,7 +10,7 @@ namespace GymSystem.DAL.Entities
     {
         public Specialty Specialty { get; set; }    
 
-        public DateTime HireDate { get; set; }
+        public DateTime HiringDate { get; set; }
         public ICollection<Session> Sessions { get; set; } = new HashSet<Session>();
     }
 }
