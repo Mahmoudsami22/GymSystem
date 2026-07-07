@@ -8,6 +8,5 @@ namespace GymSystem.DAL.Repositories.Interfaces
     public interface IPlanRepository : IGenericRepository<Plan>
     {
 
-
     }
 }

@@ -1,5 +1,6 @@
 using GymSystem.BLL.Services.Classes;
 using GymSystem.BLL.Services.Interfaces;
+using GymSystem.BLL.Utilities;
 using GymSystem.DAL.Contexts;
 using GymSystem.DAL.Repositories.Classes;
 using GymSystem.DAL.Repositories.Interfaces;
@@ -20,9 +21,11 @@ namespace GymSystem
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
             //builder.Services.AddScoped<IPlanRepository, PlanRepository>();
-            //builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            builder.Services.AddScoped<IMemberServices, MemberServices>();
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            builder.Services.AddScoped<IMemberServices, MemberServices >();
+            builder.Services.AddScoped<ISessionServices, SessionServices>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddAutoMapper(m => m.AddProfile(new MappingProfile()));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

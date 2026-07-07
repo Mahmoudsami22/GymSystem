@@ -9,5 +9,6 @@ namespace GymSystem.DAL.Repositories.Interfaces
     {
         public IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity ,new();
         public Task<int> CompeleteAsync();
+        public ISessionRepository SessionRepository { get;}
     }
 }
