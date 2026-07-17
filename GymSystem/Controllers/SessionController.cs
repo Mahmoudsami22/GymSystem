@@ -1,4 +1,4 @@
-﻿using GymManagementSystem.BLL.ViewModels.SessionViewModels;
+﻿using GymSystem.BLL.ViewModels.SessionViewModels;
 using GymSystem.BLL.Common;
 using GymSystem.BLL.Services.Classes;
 using GymSystem.BLL.Services.Interfaces;

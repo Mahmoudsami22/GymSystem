@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace GymSystemG03.DAL.Configurations
+namespace GymSystem.DAL.Configurations
 {
     internal class MemberConfigurations : GymUserConfigurations<Member>, IEntityTypeConfiguration<Member>
     {

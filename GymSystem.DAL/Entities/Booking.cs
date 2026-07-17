@@ -11,7 +11,6 @@ namespace GymSystem.DAL.Entities
         public int MemberId { get; set; }
         public Session Session { get; set; } = null!;
         public int SessionId { get; set; }
-        public DateTime BookingDate { get; set; }
         public bool IsAttended { get; set; } = false;
     }
 }

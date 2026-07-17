@@ -30,9 +30,6 @@ namespace GymSystem.DAL.Migrations
                     b.Property<int>("MemberId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("BookingDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -49,11 +46,7 @@ namespace GymSystem.DAL.Migrations
 
                     b.HasIndex("MemberId");
 
-                    b.ToTable("Bookings", t =>
-                        {
-                            t.Property("BookingDate")
-                                .HasColumnName("BookingDate1");
-                        });
+                    b.ToTable("Bookings");
                 });
 
             modelBuilder.Entity("GymSystem.DAL.Entities.Category", b =>

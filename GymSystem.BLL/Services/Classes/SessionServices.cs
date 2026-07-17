@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using GymManagementSystem.BLL.ViewModels.SessionViewModels;
+using GymSystem.BLL.ViewModels.SessionViewModels;
 using GymSystem.BLL.Common;
 using GymSystem.BLL.Services.Interfaces;
 using GymSystem.DAL.Entities;
@@ -170,7 +170,7 @@ namespace GymSystem.BLL.Services.Classes
 
             var EffecetedRows = await unitOfWork.CompeleteAsync();
 
-            return EffecetedRows > 0 ? Result.Ok() : Result.Fail("Failed to Create Session");
+            return EffecetedRows > 0 ? Result.Ok() : Result.Fail("Failed to Update Session");
         }
 
         private async Task<bool> IsSessionValidForUpdateAsync(Session session, CancellationToken ct)

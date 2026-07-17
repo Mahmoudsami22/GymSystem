@@ -1,7 +1,10 @@
-﻿using GymManagementSystem.DAL.Models.Enums;
+﻿using GymSystem.DAL.Entities.Enums;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
-namespace GymManagementSystem.BLL.ViewModels.TrainerViewModels
+namespace GymSystem.BLL.ViewModels.TrainerViewModels
 {
     public class TrainerToUpdateViewModel
     {
@@ -33,7 +36,6 @@ namespace GymManagementSystem.BLL.ViewModels.TrainerViewModels
         public string Street { get; set; } = default!;
 
         [Required(ErrorMessage = "Specialty is Required")]
-        public Specialties Specialties { get; set; }
+        public string Specialties { get; set; } = default!;
     }
-
 }

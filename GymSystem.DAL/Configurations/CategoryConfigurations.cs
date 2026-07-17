@@ -1,8 +1,7 @@
 ﻿using GymSystem.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace GymSystemG03.DAL.Configurations
+namespace GymSystem.DAL.Configurations
 {
     internal class CategoryConfigurations : IEntityTypeConfiguration<Category>
     {

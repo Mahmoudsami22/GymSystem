@@ -1,4 +1,4 @@
-﻿using GymManagementSystem.BLL.ViewModels.SessionViewModels;
+﻿using GymSystem.BLL.ViewModels.SessionViewModels;
 using GymSystem.BLL.Common;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
