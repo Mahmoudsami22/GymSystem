@@ -15,11 +15,13 @@ namespace GymSystem.BLL.Services.Classes
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
+        private readonly IAttachementServices attachementServices;
 
-        public MemberServices(IUnitOfWork unitOfWork , IMapper mapper)
+        public MemberServices(IUnitOfWork unitOfWork , IMapper mapper , IAttachementServices attachementServices)
         {
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
+            this.attachementServices = attachementServices;
         }
         public async Task<IEnumerable<MemberViewModel>> GetAllMemberAsync(CancellationToken ct = default)
         {
@@ -113,6 +115,13 @@ namespace GymSystem.BLL.Services.Classes
                 }
 
             };
+            var NewPhotoName = await attachementServices.UploadAsync(model.PhotoFile.OpenReadStream(), model.PhotoFile.FileName, "MemberPictures", ct);
+            if (string.IsNullOrEmpty(NewPhotoName)) return Result.Fail("NOT Photo");
+
+            member.Photo = NewPhotoName;
+
+
+
             unitOfWork.GetRepository<Member>().Add(member);
             var result = await unitOfWork.CompeleteAsync();
             return result > 0 ? Result.Ok() : Result.Fail("Failed to Create Member"); ;
@@ -147,6 +156,11 @@ namespace GymSystem.BLL.Services.Classes
                 return Result.Fail("Error");
             }
             unitOfWork.GetRepository<Member>().Delete(memberId);
+            if (member.Photo is not null)
+            {
+                attachementServices.Delete(member.Photo, "MemberPictures");
+            }
+                
             var result = await unitOfWork.CompeleteAsync();
             return result > 0 ? Result.Ok() : Result.Fail("Failed to Delete Member"); ;
         }

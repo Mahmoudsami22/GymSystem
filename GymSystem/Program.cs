@@ -10,7 +10,7 @@ namespace GymSystem
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -26,10 +26,12 @@ namespace GymSystem
             builder.Services.AddScoped<ISessionServices, SessionServices>();
             builder.Services.AddScoped<IPlanServices, PlanServices>();
             builder.Services.AddScoped<ITrainerServices, TrainerServices>();
+            builder.Services.AddScoped<IAnalyticsServices, AnalyticsServices>();
+            builder.Services.AddScoped<IAttachementServices, AttachementServices>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddAutoMapper(m => m.AddProfile(new MappingProfile()));
             var app = builder.Build();
-
+            await app.MigrateAndSeedAsync();
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
@@ -40,7 +42,7 @@ namespace GymSystem
 
             app.UseHttpsRedirection();
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapStaticAssets();
