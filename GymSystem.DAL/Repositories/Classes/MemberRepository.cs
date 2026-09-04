@@ -8,12 +8,14 @@ using System.Text;
 
 namespace GymSystem.DAL.Repositories.Classes
 {
-    public class PlanRepository : GenericRepository<Plan> ,IPlanRepository
+    public class MemberRepository : GenericRepository<Member> , IMemberRepository
     {
         private readonly GymDbContext dbcontext;
-        public PlanRepository(GymDbContext _dbcontext) : base(_dbcontext)
+
+        public MemberRepository(GymDbContext _dbcontext) : base(_dbcontext) 
         {
             dbcontext = _dbcontext;
-        }        
+        }
+
     }
 }
