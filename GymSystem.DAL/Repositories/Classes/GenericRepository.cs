@@ -33,6 +33,8 @@ namespace GymSystem.DAL.Repositories.Classes
             return await dbcontext.SaveChangesAsync();
         }
 
+        
+
         public void Delete(int id)
         {
             var entity = dbcontext.Set<TEntity>().FirstOrDefault(p => p.Id == id);
@@ -64,5 +66,7 @@ namespace GymSystem.DAL.Repositories.Classes
         {
             dbcontext.Set<TEntity>().Update(entity);
         }
+        public Task<int> CountAsync(Expression<Func<TEntity, bool>>? predicate = null, CancellationToken ct = default)
+         => predicate is null ? dbcontext.Set<TEntity>().AsNoTracking().CountAsync(ct) : dbcontext.Set<TEntity>().AsNoTracking().CountAsync(predicate, ct);  
     }
 }
