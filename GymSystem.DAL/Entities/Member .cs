@@ -7,7 +7,6 @@ namespace GymSystem.DAL.Entities
     public class Member : GymUser
     {
         public string? Photo { get; set; }  
-        public DateTime JoinDate { get; set; }
 
         public HealthRecord HealthRecord { get; set; } = null!;
 
