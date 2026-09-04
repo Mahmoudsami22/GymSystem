@@ -12,10 +12,15 @@ namespace GymSystem.DAL.Repositories.Classes
         private readonly GymDbContext dbContext;
         private readonly Dictionary<String, Object> _Repos = [];
 
+        
+
         public UnitOfWork(GymDbContext dbContext)
         {
             this.dbContext = dbContext;
+            SessionRepository = new SessionRepository(dbContext);
+
         }
+        public ISessionRepository SessionRepository { get; }
         public IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity, new()
         {
             var typeName = typeof(TEntity).Name;
